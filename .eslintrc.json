@@ -10,6 +10,11 @@
     "plugin:react/jsx-runtime",
     "prettier"
   ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
