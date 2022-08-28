@@ -54,6 +54,7 @@
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
-    "sort-destructure-keys/sort-destructure-keys": "error"
+    "sort-destructure-keys/sort-destructure-keys": "error",
+    "no-console":["warn", { "allow": ["warn", "error"] }]
   }
 }
