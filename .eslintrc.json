@@ -1,4 +1,5 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es2021": true
@@ -29,7 +30,8 @@
     "simple-import-sort",
     "import",
     "react-hooks",
-    "sort-destructure-keys"
+    "sort-destructure-keys",
+    "prettier"
   ],
   "rules": {
     "indent": ["error", 2],
@@ -43,7 +45,7 @@
     "import/no-duplicates": "error",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
-      "error",
+      "warn",
       {
         "vars": "all",
         "args": "after-used",
@@ -55,6 +57,6 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "sort-destructure-keys/sort-destructure-keys": "error",
-    "no-console": ["error", { "allow": ["warn", "error"] }]
+    "no-console": ["warn", { "allow": ["warn", "error"] }]
   }
 }

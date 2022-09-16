@@ -7,7 +7,7 @@
     "build": "tsc && vite build",
     "dev": "vite --open --port 3009",
     "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
-    "lint": "eslint . --ext .ts,.tsx --fix --ignore-path .gitignore",
+    "lint": "eslint . --config .eslintrc.build.json --ext .ts,.tsx --fix --ignore-path .gitignore",
     "preview": "vite preview",
     "test": "vitest",
     "test:ci": "vitest run",
