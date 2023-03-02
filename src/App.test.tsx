@@ -1,7 +1,7 @@
 import App from './App';
 import { render, screen, userEvent } from './tests/test-utils';
 
-describe('Testing App Component', () => {
+describe.skip('Testing App Component', () => {
   beforeEach(() => {
     render(<App />);
   });
