@@ -1,22 +1,38 @@
-import App from './App';
-import { render, screen, userEvent } from './tests/test-utils';
+import { http, HttpResponse } from 'msw';
 
-describe.skip('Testing App Component', () => {
-  beforeEach(() => {
+import App from '@/App';
+import { server } from '@/mocks/server';
+import { render, screen, userEvent } from '@/tests/test-utils';
+
+describe('Testing App Component', () => {
+  it('should render App Component', () => {
     render(<App />);
+    expect(
+      screen.getByRole('heading', { name: /hello world/i }),
+    ).toBeInTheDocument();
   });
-  describe('Testing counter button', () => {
-    it('should have the appropriate count when the button is clicked', async () => {
-      const user = userEvent.setup();
-      const button = screen.getByRole('button');
-      expect(button).toBeInTheDocument();
-      expect(button).toHaveTextContent('count is 0');
-      await user.click(button);
-      expect(button).toHaveTextContent('count is 1');
-      await user.click(button);
-      expect(button).toHaveTextContent('count is 2');
-      await user.click(button);
-      expect(button).toHaveTextContent('count is 3');
-    });
+
+  it('should click fetch query button and fetch the user', async () => {
+    const user = userEvent.setup();
+    server.use(
+      http.get(/users\/1/, () => {
+        return HttpResponse.json({
+          id: 26,
+          name: 'Marcus Hellams',
+          username: 'mhellams',
+          email: 'mhellams@hotmail.com',
+          phone: '555-555-5555',
+          website: 'http://mthdigital.com',
+        });
+      }),
+    );
+    render(<App />);
+    const button = screen.getByRole('button', { name: /fetch query/i });
+    expect(button).toBeInTheDocument();
+    expect(screen.queryByTestId('fetchedData')).not.toBeInTheDocument();
+    await user.click(button);
+    expect(await screen.findByTestId('fetchedData')).toBeInTheDocument();
+    expect(screen.getByText(/"id": 26/)).toBeInTheDocument();
+    expect(screen.getByText(/"name": "marcus hellams"/i)).toBeInTheDocument();
   });
 });
