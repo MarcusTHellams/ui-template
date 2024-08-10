@@ -52,7 +52,7 @@ function App() {
   });
 
   return (
-    <main className="prose max-w-none">
+    <main>
       <div className="container mt-16">
         <h1>Hello World</h1>
         <p>
