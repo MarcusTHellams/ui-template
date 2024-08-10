@@ -28,7 +28,7 @@ module.exports = {
     'react-hooks',
     'sort-destructure-keys',
     'prettier',
-    "@tanstack/query",
+    '@tanstack/query',
   ],
   rules: {
     'react-refresh/only-export-components': [
